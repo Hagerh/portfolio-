@@ -72,7 +72,7 @@ To update site content (projects, skills, experience, bio), edit **`src/constant
 
 ## Deployment
 
-The site auto-deploys to [Vercel](https://vercel.com) on every push to `main`:
+The site auto deploys to [Vercel](https://vercel.com) on every push to `main`:
 
 ```bash
 git add -A
