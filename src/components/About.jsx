@@ -14,22 +14,16 @@ const About = () => {
 
       <motion.div variants={fadeUp(0.1)} className="mt-6 max-w-3xl space-y-4 text-plum-800/80">
         <p>
-          I'm a Computer Engineering graduate from Ain Shams University with a
-          passion for building software that solves real-world problems. I
-          enjoy working across the entire development lifecycle from
-          designing intuitive Flutter applications to architecting scalable
-          backend services and integrating AI into practical products.
+        I am a Computer Engineering graduate from Ain Shams University, 
+        I love building software that solves problems in the real world. 
+        I love working across the full development lifecycle - from designing intuitive Flutter applications, to architecting scalable backend services, to integrating AI into practical products.
+
         </p>
         <p>
-          My experience spans cross-platform mobile development, backend
-          engineering with FastAPI, and local AI pipelines using Whisper and
-          LLMs. I value clean architecture, maintainable code, and creating
-          applications that are reliable, efficient, and designed with the
-          user in mind.
+         My background is in cross-platform mobile development, backend engineering with FastAPI and local AI pipelines with Whisper and LLMs. I am a big fan of clean architecture, maintainable code, and designing applications that are reliable, efficient and user-centric.
         </p>
         <p>
-          I'm always looking for opportunities to learn new technologies and
-          build software that has a meaningful impact.
+         I am enthusiastic about learning new technologies and building meaningful software opportunities.
         </p>
       </motion.div>
 

@@ -23,10 +23,8 @@ const Hero = () => {
             <br /> Solves Real Problems
           </h1>
           <p className="mt-6 max-w-md text-plum-800/80">
-            Computer Engineer &amp; Software Developer that combine AI, mobile
-            development, and backend engineering, from offline lecture
-            assistants powered by local LLMs to scalable REST APIs and
-            real-time cross-platform applications.
+            Computer Engineer &amp; Software Developer who combines AI, mobile
+            development, and backend engineering, from smart, AI-driven applications to scalable REST APIs and real-time cross-platform systems.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <a href="#projects" className={pillPrimary}>
