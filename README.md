@@ -2,7 +2,7 @@
 
 A 3D developer portfolio built with React and Three.js, showcasing projects spanning mobile development, backend engineering, and AI integration.
 
-**Live site:** _add your Vercel URL here once deployed_
+**Live site:** https://portfolio-five-teal-zuebjjjrlf.vercel.app/#contact
 
 ## Tech Stack
 
