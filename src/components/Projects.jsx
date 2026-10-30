@@ -96,7 +96,7 @@ const Projects = () => {
       </motion.div>
 
       <motion.p variants={fadeUp(0.1)} className="mt-6 max-w-2xl text-plum-800/80">
-        A few things I've built, grouped by the kind of role they fit. Pick a track to see the projects that best match it — a project can appear in more than one.
+        A few things I've built, grouped by the kind of role they fit. Pick a track to see the projects that best match it  a project can appear in more than one.
       </motion.p>
 
       <motion.div

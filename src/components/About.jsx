@@ -1,9 +1,58 @@
 import { motion } from 'framer-motion';
-import { Tilt } from 'react-tilt';
 import { fadeUp } from '../utils/motion';
 import { sectionHeadText, sectionPadding, sectionSubText } from '../utils/styles';
 import { skillGroups } from '../constants';
 
+
+const groupAccents = ['bg-blossom-500', 'bg-plum-400', 'bg-peach-200', 'bg-blossom-300'];
+
+const chipsContainer = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.05, delayChildren: 0.15 } },
+};
+
+const chip = {
+  hidden: { opacity: 0, y: 14, scale: 0.8 },
+  show: { opacity: 1, y: 0, scale: 1, transition: { type: 'spring', stiffness: 260, damping: 18 } },
+};
+
+const SkillGroup = ({ group, index }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 40 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, amount: 0.3 }}
+    transition={{ duration: 0.6, delay: (index % 2) * 0.12, ease: 'easeOut' }}
+    whileHover={{ y: -6 }}
+    className="rounded-3xl bg-white p-6 shadow-lg shadow-blossom-100"
+  >
+    <div className="mb-4 flex items-center gap-3">
+      <motion.span
+        className={`h-3 w-3 rounded-full ${groupAccents[index % groupAccents.length]}`}
+        animate={{ scale: [1, 1.5, 1], opacity: [1, 0.6, 1] }}
+        transition={{ duration: 2.4, repeat: Infinity, delay: index * 0.4 }}
+      />
+      <h3 className="text-sm font-bold uppercase tracking-widest text-blossom-600">{group.title}</h3>
+    </div>
+    <motion.div
+      variants={chipsContainer}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.4 }}
+      className="flex flex-wrap gap-2.5"
+    >
+      {group.items.map((skill) => (
+        <motion.span
+          key={skill}
+          variants={chip}
+          whileHover={{ y: -4, scale: 1.08, rotate: -2 }}
+          className="cursor-default rounded-full bg-peach-50 px-4 py-2 text-sm font-semibold text-plum-800 ring-1 ring-blossom-100 transition-colors hover:bg-blossom-500 hover:text-white hover:ring-blossom-500"
+        >
+          {skill}
+        </motion.span>
+      ))}
+    </motion.div>
+  </motion.div>
+);
 
 const About = () => {
   return (
@@ -27,24 +76,11 @@ const About = () => {
         <p>I'm looking for a backend or integration role where I can keep growing.</p>
       </motion.div>
 
-      <motion.div variants={fadeUp(0.2)} className="mt-10 grid gap-8 sm:grid-cols-2">
-        {skillGroups.map((group) => (
-          <div key={group.title}>
-            <h3 className="mb-3 text-sm font-bold uppercase tracking-widest text-blossom-600">
-              {group.title}
-            </h3>
-            <div className="flex flex-wrap gap-3">
-              {group.items.map((skill) => (
-                <Tilt key={skill} className="tilt-card" options={{ max: 15, scale: 1.03 }}>
-                  <div className="rounded-2xl bg-white px-4 py-2 text-sm font-semibold text-plum-800 shadow-md shadow-blossom-100">
-                    {skill}
-                  </div>
-                </Tilt>
-              ))}
-            </div>
-          </div>
+      <div className="mt-10 grid gap-6 sm:grid-cols-2">
+        {skillGroups.map((group, i) => (
+          <SkillGroup key={group.title} group={group} index={i} />
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 };
