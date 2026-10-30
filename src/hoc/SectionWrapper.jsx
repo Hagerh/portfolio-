@@ -11,7 +11,7 @@ const SectionWrapper = (Component, idName) => {
         variants={staggerContainer()}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount: 'some' }}
         className="relative"
       >
         <Component />
