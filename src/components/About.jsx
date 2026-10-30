@@ -64,14 +64,15 @@ const About = () => {
 
       <motion.div variants={fadeUp(0.1)} className="mt-6 max-w-3xl space-y-4 text-plum-800/80">
         <p>
-          I am a Computer Engineering graduate from Ain Shams University (2026) with experience in
-          backend APIs, enterprise integration (IBM FileNet, BAW), and Flutter apps with AI features.
+         I'm a Computer Engineering graduate from Ain Shams University (2026). I like building the
+    parts of a product people don't see: APIs, event-driven services, and workflows that keep
+    everything running smoothly.
         </p>
         <p>
-          I currently work as an Enterprise Application Integration intern at Intercom Enterprise,
-          building document automation and approval workflow solutions for banking clients. Alongside
-          that I build event-driven backends with Node.js and Kafka, and AI powered products with
-          FastAPI, Whisper and LLMs. I care about clean architecture, maintainable code and reliable systems.
+         I'm currently an Enterprise Application Integration intern at Intercom Enterprise, where I
+    develop IBM FileNet solutions in Java and build approval workflows in IBM BAW. On my own
+    projects, I build event-driven backends with Node.js and Kafka, and AI-powered apps with
+    Flutter, FastAPI, Whisper and LLMs.
         </p>
         <p>I'm looking for a backend or integration role where I can keep growing.</p>
       </motion.div>
