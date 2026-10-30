@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { navLinks } from '../constants';
-import profilePhoto from '../assets/photo.jpeg';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -23,12 +22,7 @@ const Navbar = () => {
       }`}
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 sm:px-10">
-        <a href="#hero" className="flex items-center gap-3 text-xl font-bold text-plum-900">
-          <img
-            src={profilePhoto}
-            alt="Hager Hesham"
-            className="h-9 w-9 rounded-full object-cover ring-2 ring-blossom-300"
-          />
+        <a href="#hero" className="text-xl font-bold text-plum-900">
           Hager<span className="text-blossom-500">Hesham</span>
         </a>
 
