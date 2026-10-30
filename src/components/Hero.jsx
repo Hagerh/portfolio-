@@ -23,8 +23,7 @@ const Hero = () => {
             <br /> Solves Real Problems
           </h1>
           <p className="mt-6 max-w-md text-plum-800/80">
-            Computer Engineer &amp; Software Developer who combines AI, mobile
-            development, and backend engineering, from smart, AI-driven applications to scalable REST APIs and real-time cross-platform systems.
+            Computer Engineer focused on backend APIs, enterprise integration (IBM FileNet &amp; BAW) and AI-powered Flutter apps — from event-driven services to document and approval workflows for banking clients.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <a href="#projects" className={pillPrimary}>

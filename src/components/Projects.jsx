@@ -1,18 +1,23 @@
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import { Tilt } from 'react-tilt';
 import { fadeUp } from '../utils/motion';
 import { sectionHeadText, sectionPadding, sectionSubText } from '../utils/styles';
-import { projects } from '../constants';
+import { projects, projectTracks } from '../constants';
 
-const ProjectCard = ({ project, index }) => (
-  <motion.div variants={fadeUp(index * 0.1)}>
+const ProjectCard = ({ project }) => (
+  <div>
     <Tilt
       className="tilt-card h-full"
       options={{ max: 12, scale: 1.02, speed: 400 }}
     >
       <div className="flex h-full flex-col overflow-hidden rounded-3xl bg-white shadow-lg shadow-blossom-100">
         <div className="relative h-48 w-full bg-gradient-to-br from-blossom-100 to-peach-100">
-          {project.images ? (
+          {!project.image && !project.images ? (
+            <div className="flex h-full items-center justify-center px-6 text-center text-sm font-bold uppercase tracking-widest text-blossom-500/70">
+              {project.tags[0]?.name}
+            </div>
+          ) : project.images ? (
             <div className="grid h-full grid-cols-2 gap-0.5">
               {project.images.map((src) => (
                 <img
@@ -74,10 +79,15 @@ const ProjectCard = ({ project, index }) => (
         </div>
       </div>
     </Tilt>
-  </motion.div>
+  </div>
 );
 
 const Projects = () => {
+  const [track, setTrack] = useState('all');
+  const visible = projects.filter((p) => track === 'all' || p.tracks.includes(track));
+  const countFor = (id) =>
+    id === 'all' ? projects.length : projects.filter((p) => p.tracks.includes(id)).length;
+
   return (
     <div className={`${sectionPadding} mx-auto max-w-6xl`}>
       <motion.div variants={fadeUp(0)}>
@@ -86,14 +96,50 @@ const Projects = () => {
       </motion.div>
 
       <motion.p variants={fadeUp(0.1)} className="mt-6 max-w-2xl text-plum-800/80">
-        A few things I've built. These projects showcase my skills in cross-platform mobile development, backend engineering, and AI integration. Each project is a testament to my commitment to building software that solves real-world problems.
+        A few things I've built, grouped by the kind of role they fit. Pick a track to see the projects that best match it — a project can appear in more than one.
       </motion.p>
 
-      <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        {projects.map((project, index) => (
-          <ProjectCard key={project.name} project={project} index={index} />
+      <motion.div
+        variants={fadeUp(0.2)}
+        role="tablist"
+        aria-label="Project tracks"
+        className="mt-8 flex flex-wrap gap-3"
+      >
+        {projectTracks.map((t) => (
+          <button
+            key={t.id}
+            type="button"
+            role="tab"
+            aria-selected={track === t.id}
+            onClick={() => setTrack(t.id)}
+            className={`rounded-full px-5 py-2 text-sm font-semibold transition-colors ${
+              track === t.id
+                ? 'bg-blossom-500 text-white shadow-md shadow-blossom-100'
+                : 'bg-white text-plum-800 hover:bg-blossom-100'
+            }`}
+          >
+            {t.label}
+            <span className="ml-2 text-xs opacity-70">{countFor(t.id)}</span>
+          </button>
         ))}
-      </div>
+      </motion.div>
+
+      <motion.div layout className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <AnimatePresence mode="popLayout">
+          {visible.map((project, index) => (
+            <motion.div
+              key={project.name}
+              layout
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.25, delay: index * 0.04 }}
+            >
+              <ProjectCard project={project} />
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </motion.div>
     </div>
   );
 };
