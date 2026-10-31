@@ -133,7 +133,7 @@ export const projects = [
       { name: 'flutter', color: purple },
     ],
     image: '/projects/RAG.png',
-    sourceCodeLink: 'https://github.com/Hagerh/RAG-Application.git',
+    sourceCodeLink: 'https://github.com/Hagerh/RAG-FlutterApplication.git',
     liveDemoLink: '',
   },
   {
